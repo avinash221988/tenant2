@@ -1,0 +1,6 @@
+apiVersion: application.core.sky.uk/v1alpha1
+kind: Application
+metadata:
+  name: example-app
+spec:
+  pipelineShape: simple
