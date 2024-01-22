@@ -1,0 +1,14 @@
+name: Call Common
+on:
+  push:
+    branches:
+      - main
+  pull_request_target:
+    types: [ opened, synchronize]
+
+jobs:
+  Trigger-Build-in-DemoGHAction:
+    uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
+    with:
+      imageName: "tenant1image"
+      workflow_PATH: avinash221988/tenant2/.github/workflows/workflow2.yml@main
