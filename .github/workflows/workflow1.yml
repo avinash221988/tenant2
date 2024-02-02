@@ -11,3 +11,4 @@ jobs:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
     with:
       imageName: "tenant2image"
+      TEST_VAR: ${{ vars.TEST_VAR }}
