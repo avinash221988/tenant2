@@ -5,6 +5,7 @@ on:
       - main
   pull_request_target:
     types: [ opened, synchronize]
+    
 jobs:
   Trigger-Build-in-DemoGHAction:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
