@@ -11,3 +11,4 @@ jobs:
     with:
       imageName: "tenant2image"
       TEST_VAR: ${{ vars.TEST_VAR }}
+
