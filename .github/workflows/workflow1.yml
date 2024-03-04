@@ -1,4 +1,4 @@
-name: Call Common
+name: CallCoreDemo
 on:
   push:
     branches:
