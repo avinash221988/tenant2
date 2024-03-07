@@ -1,0 +1,23 @@
+name: CallCoreDemo
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Start background process
+      run: |
+        sleep 60 & echo $! > pid.txt
+
+    - name: Main steps
+      run: |
+        echo "I am a step in a job"
+
+    - name: Stop background process
+      run: |
+        kill $(cat pid.txt) || true
+      if: always()
