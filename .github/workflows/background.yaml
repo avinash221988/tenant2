@@ -16,8 +16,3 @@ jobs:
     - name: Main steps
       run: |
         echo "I am a step in a job"
-
-    - name: Stop background process
-      run: |
-        kill $(cat pid.txt) || true
-      if: always()
