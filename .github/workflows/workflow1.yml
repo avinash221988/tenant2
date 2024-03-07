@@ -11,4 +11,4 @@ jobs:
     with:
       TEST_VAR: ${{ vars.TEST_VAR }}
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
