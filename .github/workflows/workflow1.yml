@@ -43,8 +43,8 @@ jobs:
     with:
       TEST_VAR: ${{ vars.TEST_VAR }}
       PATHS: |
-        WF_Files/GHContext.txt
-        WF_Files/job/jobdump.txt
-        WF_Files/archive/path.txt
+        GHContext.txt
+        job/jobdump.txt
+        archive/path.txt
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
