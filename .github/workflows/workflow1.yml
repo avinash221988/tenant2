@@ -13,19 +13,19 @@ jobs:
        env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
        run: |
-         mkdir /WF_Files
+         mkdir -p /WF_Files
          echo "$GITHUB_CONTEXT" >> /WF_Files/GHContext.txt
 
      - name: Dump job context
        env:
           JOB_CONTEXT: ${{ toJson(job) }}
        run: |
-          mkdir /WF_Files/job
+          mkdir -p /WF_Files/job
           echo "$JOB_CONTEXT"  >> /WF_Files/job/jobdump.txt
 
      - name: Check ARchive paths
        run: |
-            mkdir /WF_Files/archive
+            mkdir -p /WF_Files/archive
             echo "${{ inputs.PATHS }}" >> /WF_Files/archive/path.txt
     
      - name: Archive artifacts
