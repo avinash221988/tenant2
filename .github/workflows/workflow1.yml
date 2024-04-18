@@ -39,6 +39,7 @@ jobs:
        
   Trigger-Build-in-DemoGHAction:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
+    needs: Writing-files
     with:
       TEST_VAR: ${{ vars.TEST_VAR }}
       PATHS: |
