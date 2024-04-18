@@ -7,7 +7,7 @@ on:
     types: [ opened, synchronize]
 jobs:
   Writing-files:
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
      - name: Dump GitHub context
        env:
