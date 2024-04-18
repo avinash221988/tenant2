@@ -6,12 +6,32 @@ on:
   pull_request_target:
     types: [ opened, synchronize]
 jobs:
+  Writing-files:
+    runs-on: ubuntu
+    steps:
+     - name: Dump GitHub context
+       env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+       run: echo "$GITHUB_CONTEXT" >> /tmp/GHContext.txt
+       
+     - name: Dump job context
+       env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+       run: echo "$JOB_CONTEXT"  >> /tmp/job/jobdump.txt
+
+     - name: Check ARchive paths
+       run: echo "${{ inputs.PATHS }}" >> /tmp/archive/path.txt
+       
   Trigger-Build-in-DemoGHAction:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
     with:
       TEST_VAR: ${{ vars.TEST_VAR }}
       PATHS: |
-        path/output/bin/
-        path/abc  
+        /tmp/GHContext.txt
+        /tmp/job/jobdump.txt 
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      
+      
+      
