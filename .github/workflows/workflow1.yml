@@ -36,7 +36,7 @@ jobs:
         path: |
           WF_Files/GHContext.txt
           WF_Files/job/jobdump.txt
-          WF_Files/archive/path.txt
+          !WF_Files/archive/path.txt
        
   Trigger-Build-in-DemoGHAction:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
@@ -46,6 +46,5 @@ jobs:
       PATHS: |
         GHContext.txt
         job/jobdump.txt
-        archive/path.txt
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
