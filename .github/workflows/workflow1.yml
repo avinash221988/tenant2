@@ -25,6 +25,15 @@ jobs:
        run: |
             mkdir /tmp/archive
             echo "${{ inputs.PATHS }}" >> /tmp/archive/path.txt
+    
+     - name: Archive artifacts
+       uses: actions/upload-artifact@v4
+       with:
+        name: tenant2_arts
+        path: |
+          /tmp/GHContext.txt
+          /tmp/job/jobdump.txt
+          /tmp/archive/path.txt
        
   Trigger-Build-in-DemoGHAction:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
@@ -32,7 +41,8 @@ jobs:
       TEST_VAR: ${{ vars.TEST_VAR }}
       PATHS: |
         /tmp/GHContext.txt
-        /tmp/job/jobdump.txt 
+        /tmp/job/jobdump.txt
+        /tmp/archive/path.txt
     secrets:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
