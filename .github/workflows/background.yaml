@@ -8,7 +8,7 @@ jobs:
     steps:
     - name: Start background process
       run: |
-        sleep 60 & echo $! > pid.txt
+        echo $! > pid.txt
 
     - name: Main steps
       run: |
