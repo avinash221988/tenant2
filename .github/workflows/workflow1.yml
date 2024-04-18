@@ -13,14 +13,18 @@ jobs:
        env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
        run: echo "$GITHUB_CONTEXT" >> /tmp/GHContext.txt
-       
+
      - name: Dump job context
        env:
           JOB_CONTEXT: ${{ toJson(job) }}
-       run: echo "$JOB_CONTEXT"  >> /tmp/job/jobdump.txt
+       run: |
+          mkdir /tmp/job
+          echo "$JOB_CONTEXT"  >> /tmp/job/jobdump.txt
 
      - name: Check ARchive paths
-       run: echo "${{ inputs.PATHS }}" >> /tmp/archive/path.txt
+       run: |
+            mkdir /tmp/archive
+            echo "${{ inputs.PATHS }}" >> /tmp/archive/path.txt
        
   Trigger-Build-in-DemoGHAction:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
