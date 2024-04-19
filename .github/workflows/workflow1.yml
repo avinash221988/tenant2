@@ -33,7 +33,7 @@ jobs:
        uses: actions/upload-artifact@v4
        with:
         name: tenant2_arts
-        path: |
+        path: |-
           WF_Files/GHContext.txt
           WF_Files/job/jobdump.txt
           !WF_Files/archive/path.txt
