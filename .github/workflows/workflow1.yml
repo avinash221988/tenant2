@@ -7,44 +7,44 @@ on:
     types: [ opened, synchronize]
   workflow_dispatch:
 jobs:
-  Writing-files:
-    runs-on: ubuntu-latest
-    steps:
-     - name: Dump GitHub context
-       env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-       run: |
-         mkdir -p WF_Files
-         echo "$GITHUB_CONTEXT" >> WF_Files/GHContext.txt
+  # Writing-files:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #    - name: Dump GitHub context
+  #      env:
+  #         GITHUB_CONTEXT: ${{ toJson(github) }}
+  #      run: |
+  #        mkdir -p WF_Files
+  #        echo "$GITHUB_CONTEXT" >> WF_Files/GHContext.txt
 
-     - name: Dump job context
-       env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-       run: |
-          mkdir -p WF_Files/job
-          echo "$JOB_CONTEXT"  >> WF_Files/job/jobdump.txt
+  #    - name: Dump job context
+  #      env:
+  #         JOB_CONTEXT: ${{ toJson(job) }}
+  #      run: |
+  #         mkdir -p WF_Files/job
+  #         echo "$JOB_CONTEXT"  >> WF_Files/job/jobdump.txt
 
-     - name: Check ARchive paths
-       run: |
-            mkdir -p WF_Files/archive
-            echo "${{ inputs.PATHS }}" >> WF_Files/archive/path.txt
+  #    - name: Check ARchive paths
+  #      run: |
+  #           mkdir -p WF_Files/archive
+  #           echo "${{ inputs.PATHS }}" >> WF_Files/archive/path.txt
     
-     - name: Archive artifacts
-       uses: actions/upload-artifact@v4
-       with:
-        name: tenant2_arts
-        path: |-
-          WF_Files/GHContext.txt
-          WF_Files/job/jobdump.txt
-          !WF_Files/archive/path.txt
+  #    - name: Archive artifacts
+  #      uses: actions/upload-artifact@v4
+  #      with:
+  #       name: tenant2_arts
+  #       path: |-
+  #         WF_Files/GHContext.txt
+  #         WF_Files/job/jobdump.txt
+  #         !WF_Files/archive/path.txt
        
   Trigger-Build-in-DemoGHAction:
     uses: avinash221988/coreDemo/.github/workflows/docker-build.yml@main
-    needs: Writing-files
-    with:
-      TEST_VAR: ${{ vars.TEST_VAR }}
-      PATHS: |
-        GHContext.txt
-        job/jobdump.txt
-    secrets:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # needs: Writing-files
+    # with:
+    #   TEST_VAR: ${{ vars.TEST_VAR }}
+    #   PATHS: |
+    #     GHContext.txt
+    #     job/jobdump.txt
+    # secrets:
+    #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
